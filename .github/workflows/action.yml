@@ -1,0 +1,21 @@
+name: 'Marlin Compiler'
+description: 'Compiles Marlin and exposes the resulting firmware binary as an artifact'
+inputs:
+  platformio_args:
+    description: 'Arguments passed to platformio run'
+    required: false
+    default: ''
+  configuration_url: 
+    description: 'URL for Configuration.h'
+    required: false
+  configuration_adv_url: 
+    description: 'URL for Configuration_adv.h'
+    required: false
+outputs:
+  logs: 
+    description: 'Build logs'
+runs:
+  using: 'docker'
+  image: Dockerfile
+  args:
+    - ${{ inputs.platformio_args }}
